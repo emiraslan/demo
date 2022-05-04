@@ -1,29 +1,59 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        Amiraslan Bakhshili
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-switch
+        v-model="$vuetify.theme.dark"
+        class="d-flex align-center"
+        label="Dark mode"
+      />
+    </v-app-bar>
+
+    <v-main>
+      <div class="content">
+        <TitleComponent msg="Vue Invoice Calculator"/>
+        <ActionsComponent>
+          <InvoiceListComponent/>
+        </ActionsComponent>
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import ActionsComponent from './components/ActionsComponent.vue'
+import TitleComponent from './components/TitleComponent.vue'
+import InvoiceListComponent from './components/InvoiceListComponent.vue'
 
 export default Vue.extend({
   name: 'App',
+
   components: {
-    HelloWorld
-  }
+    ActionsComponent,
+    TitleComponent,
+    InvoiceListComponent
+  },
 });
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+
+.content {
+  margin: 80px auto;
+  border: 1px solid #eee;
+  width: 800px;
+  padding: 60px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 10%);
 }
+
 </style>
